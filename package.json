@@ -1,5 +1,5 @@
 {
-  "name": "project-3",
+  "name": "RealStore",
   "version": "1.0.0",
   "description": "",
   "main": "server/server.js",
@@ -13,7 +13,7 @@
     "tailwind": "npx tailwindcss -i ./public/css/input.css -o ./public/css/output.css --watch"
   },
   "keywords": [],
-  "author": "",
+  "author": "Conor, Jessica, Lexi, Nicholas, Matthew",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^5.1.0",
