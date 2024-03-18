@@ -14,7 +14,7 @@
   },
   "keywords": [],
   "author": "Conor, Jessica, Lexi, Nicholas, Matthew",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "concurrently": "^5.1.0",
     "daisyui": "4.7.3",
