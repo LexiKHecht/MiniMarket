@@ -1,6 +1,6 @@
-const { User, Product, Category, Order } = require('../models');
-const { signToken, AuthenticationError } = require('../utils/auth');
-const stripe = require('stripe')('');
+const { User, Product, Category, Order } = require("../models");
+const { signToken, AuthenticationError } = require("../utils/auth");
+const stripe = require("stripe")("");
 // add in strip key^
 const resolvers = {
   Query: {
@@ -16,20 +16,27 @@ const resolvers = {
 
       if (name) {
         params.name = {
-          $regex: name
+          $regex: name,
         };
       }
 
-      return await Product.find(params).populate('category');
+      return await Product.find(params).populate("category");
+    },
+    productsTest: async (parent, { category, name }) => {
+      try {
+        return Product.find({});
+      } catch {
+        throw AuthenticationError;
+      }
     },
     product: async (parent, { _id }) => {
-      return await Product.findById(_id).populate('category');
+      return await Product.findById(_id).populate("category");
     },
     user: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          path: 'orders.products',
-          populate: 'category'
+          path: "orders.products",
+          populate: "category",
         });
 
         user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
@@ -42,8 +49,8 @@ const resolvers = {
     order: async (parent, { _id }, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          path: 'orders.products',
-          populate: 'category'
+          path: "orders.products",
+          populate: "category",
         });
 
         return user.orders.id(_id);
@@ -61,11 +68,11 @@ const resolvers = {
       for (const product of args.products) {
         line_items.push({
           price_data: {
-            currency: 'usd',
+            currency: "usd",
             product_data: {
               name: product.name,
               description: product.description,
-              images: [`${url}/images/${product.image}`]
+              images: [`${url}/images/${product.image}`],
             },
             unit_amount: product.price * 100,
           },
@@ -74,9 +81,9 @@ const resolvers = {
       }
 
       const session = await stripe.checkout.sessions.create({
-        payment_method_types: ['card'],
+        payment_method_types: ["card"],
         line_items,
-        mode: 'payment',
+        mode: "payment",
         success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${url}/`,
       });
@@ -95,7 +102,9 @@ const resolvers = {
       if (context.user) {
         const order = new Order({ products });
 
-        await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
+        await User.findByIdAndUpdate(context.user._id, {
+          $push: { orders: order },
+        });
 
         return order;
       }
@@ -104,7 +113,9 @@ const resolvers = {
     },
     updateUser: async (parent, args, context) => {
       if (context.user) {
-        return await User.findByIdAndUpdate(context.user._id, args, { new: true });
+        return await User.findByIdAndUpdate(context.user._id, args, {
+          new: true,
+        });
       }
 
       throw AuthenticationError;
@@ -112,7 +123,11 @@ const resolvers = {
     updateProduct: async (parent, { _id, quantity }) => {
       const decrement = Math.abs(quantity) * -1;
 
-      return await Product.findByIdAndUpdate(_id, { $inc: { quantity: decrement } }, { new: true });
+      return await Product.findByIdAndUpdate(
+        _id,
+        { $inc: { quantity: decrement } },
+        { new: true }
+      );
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
@@ -130,8 +145,8 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
-    }
-  }
+    },
+  },
 };
 
 module.exports = resolvers;

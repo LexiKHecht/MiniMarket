@@ -7,7 +7,7 @@
     "start": "node server/server.js",
     "develop": "concurrently \"cd server && pnpm run watch\" \"cd client && pnpm run dev\"",
     "install": "cd server && pnpm i && cd ../client && pnpm i",
-    "seed": "cd server && pnpm run seed",
+    "seed": "cd server/seeders && node seed.js",
     "build": "cd client && pnpm run build",
     "watch": "nodemon server.js",
     "tailwind": "npx tailwindcss -i ./public/css/input.css -o ./public/css/output.css --watch"
