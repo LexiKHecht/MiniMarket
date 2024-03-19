@@ -15,6 +15,12 @@ const userSchema = new Schema({
     required: true,
     trim: true
   },
+  username: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true,
+  },
   email: {
     type: String,
     required: true,
@@ -25,6 +31,12 @@ const userSchema = new Schema({
     required: true,
     minlength: 5
   },
+  thoughts: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Thought',
+    },
+  ],
   orders: [Order.schema]
 });
 

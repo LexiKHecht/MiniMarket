@@ -1,4 +1,4 @@
-const { User, Product, Category, Order } = require('../models');
+const { User, Product, Category, Order, Thought } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 const stripe = require('stripe')('');
 // add in strip key^
@@ -83,6 +83,13 @@ const resolvers = {
 
       return { session: session.id };
     },
+    thoughts: async () => {
+      return Thought.find().sort({ createdAt: -1 });
+    },
+
+    thought: async (parent, { thoughtId }) => {
+      return Thought.findOne({ _id: thoughtId });
+    },
   },
   Mutation: {
     addUser: async (parent, args) => {
@@ -130,6 +137,31 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+    },
+    addThought: async (parent, { thoughtText, thoughtAuthor }) => {
+      return Thought.create({ thoughtText, thoughtAuthor });
+    },
+    addComment: async (parent, { thoughtId, commentText }) => {
+      return Thought.findOneAndUpdate(
+        { _id: thoughtId },
+        {
+          $addToSet: { comments: { commentText } },
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    },
+    removeThought: async (parent, { thoughtId }) => {
+      return Thought.findOneAndDelete({ _id: thoughtId });
+    },
+    removeComment: async (parent, { thoughtId, commentId }) => {
+      return Thought.findOneAndUpdate(
+        { _id: thoughtId },
+        { $pull: { comments: { _id: commentId } } },
+        { new: true }
+      );
     }
   }
 };
