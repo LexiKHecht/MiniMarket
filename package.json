@@ -9,8 +9,7 @@
     "install": "cd server && pnpm i && cd ../client && pnpm i",
     "seed": "cd server/seeders && node seed.js",
     "build": "cd client && pnpm run build",
-    "watch": "nodemon server.js",
-    "tailwind": "npx tailwindcss -i ./public/css/input.css -o ./public/css/output.css --watch"
+    "watch": "nodemon server.js"
   },
   "keywords": [],
   "author": "Conor, Jessica, Lexi, Nicholas, Matthew",
