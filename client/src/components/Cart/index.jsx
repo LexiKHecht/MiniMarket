@@ -8,6 +8,7 @@ import Auth from '../../utils/auth';
 import { useStoreContext } from '../../utils/GlobalState';
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
 import './style.css';
+import { ShoppingCartIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 // stripePromise returns a promise with the stripe object as soon as the Stripe package loads
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
@@ -66,8 +67,8 @@ const Cart = () => {
     return (
       <div className="cart-closed" onClick={toggleCart}>
         <span role="img" aria-label="trash">
-          🛒
-        </span>
+          <ShoppingCartIcon className="h-6 w-6 text-darkGray dark:text-white" /> 
+ </span>
       </div>
     );
   }
@@ -75,16 +76,17 @@ const Cart = () => {
   return (
     <div className="cart">
       <div className="close" onClick={toggleCart}>
-        [close]
+        <XMarkIcon className="h-6 w-6 text-darkGray dark:text-white" />
       </div>
-      <h2>Shopping Cart</h2>
+      <h2 className="text-darkGray dark:text-white">Cart</h2>
+
       {state.cart.length ? (
         <div>
           {state.cart.map((item) => (
             <CartItem key={item._id} item={item} />
           ))}
 
-          <div className="flex-row space-between">
+          <div className="flex-row space-between text-darkGray dark:text-white">
             <strong>Total: ${calculateTotal()}</strong>
 
             {/* Check to see if the user is logged in. If so render a button to check out */}
@@ -96,11 +98,8 @@ const Cart = () => {
           </div>
         </div>
       ) : (
-        <h3>
-          <span role="img" aria-label="shocked">
-            😱
-          </span>
-          You haven't added anything to your cart yet!
+        <h3 className=" bg-palePurple rounded-t-lg text-darkGray dark:text-white">
+          Cart Empty
         </h3>
       )}
     </div>

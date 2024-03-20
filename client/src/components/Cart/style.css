@@ -7,7 +7,6 @@
   max-height: 60%;
   background-color: var(--light);
   overflow: auto;
-  padding: .5rem;
   box-shadow: 0 0 1rem rgba(0, 0, 0, .5);
   border-bottom-left-radius: .5rem;
 }
@@ -15,8 +14,12 @@
 .cart h2 {
   font-size: 1.5rem;
   border-bottom: 1px solid var(--dark);
-  padding-bottom: .5rem;
+  padding: .5rem;
   margin: 1rem 0;
+}
+
+.cart h3 {
+  padding: .5rem;
 }
 
 .cart .close {
