@@ -51,10 +51,10 @@ function ProductList() {
           {filterProducts().map((product) => (
             <ProductItem
               key={product._id}
-              _id={product._id}
-              image={product.image}
+              _id={product.productId}
+              image={product.imageURL}
               name={product.name}
-              price={product.price}
+              price={product.price.amount}
               quantity={product.quantity}
             />
           ))}
