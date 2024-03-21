@@ -30,18 +30,19 @@ db.once("open", async () => {
       product.price = product.variants.edges[0].node.price;
       return product;
     });
-
+    console.log(data);
     const loadedProductData = products.map((loadedProduct) => ({
-      id: loadedProduct.id,
+      productId: loadedProduct.id,
       name: loadedProduct.title,
       description: loadedProduct.description, // You may need to adjust this depending on the actual response structure
-      image: loadedProduct.featuredImage.url || "",
-      category: loadedProduct.tags,
+      imageURL: loadedProduct.featuredImage.url || "",
+      tags: loadedProduct.tags,
       price: loadedProduct.price,
     }));
 
     console.log(loadedProductData);
-    Product.insertMany(loadedProductData);
+
+    await Product.insertMany(loadedProductData);
   } catch (err) {
     console.error(err);
   }

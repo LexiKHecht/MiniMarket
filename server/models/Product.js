@@ -6,29 +6,35 @@ const productSchema = new Schema({
   name: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
+  },
+  productId: {
+    type: String,
+    required: true,
+    trim: true,
+    unique: true,
   },
   description: {
-    type: String
+    type: String,
   },
-  image: {
-    type: String
+  imageURL: {
+    type: String,
   },
   price: {
-    type: Number,
-    required: true,
-    min: 0.99
+    amount: String,
+    currencyCode: String
   },
   quantity: {
     type: Number,
     min: 0,
-    default: 0
+    default: 0,
   },
-  category: {
-    type: Schema.Types.ObjectId,
-    ref: 'Category',
-    required: true
-  }
+  tags: [
+    {
+      type: String,
+      required: true,
+    },
+  ],
 });
 
 const Product = mongoose.model('Product', productSchema);
