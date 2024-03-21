@@ -1,18 +1,20 @@
 const typeDefs = `
-  type Category {
-    _id: ID
-    name: String
-  }
 
   type Product {
     _id: ID
+    productId: String
     name: String
     description: String
-    image: String
+    imageURL: String
     quantity: Int
-    price: Float
-    category: Category
+    price: Price
+    tags: [String]
   }
+
+type Price {
+  amount: String
+  currencyCode: String
+}
 
   type Order {
     _id: ID
@@ -42,7 +44,7 @@ const typeDefs = `
     _id: ID
     purchaseQuantity: Int
     name: String
-    image: String
+    imageURL: String
     price: Float
     quantity: Int
   }
@@ -62,10 +64,7 @@ const typeDefs = `
   }
 
   type Query {
-    categories: [Category]
-     productsTest: [Product]
-
-    products(category: ID, name: String): [Product]
+    products(tag: String, name: String): [Product]
     product(_id: ID!): Product
     user: User
     users: [User]
