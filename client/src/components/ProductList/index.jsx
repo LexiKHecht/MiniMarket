@@ -22,9 +22,11 @@ function ProductList() {
       });
       data.products.forEach((product) => {
         idbPromise('products', 'put', product);
+
       });
     } else if (!loading) {
       idbPromise('products', 'get').then((products) => {
+
         dispatch({
           type: UPDATE_PRODUCTS,
           products: products,
@@ -60,7 +62,7 @@ function ProductList() {
           ))}
         </div>
       ) : (
-        <h3>You haven't added any products yet!</h3>
+        <h3>You have not added any products yet!</h3>
       )}
       {/* {loading ? <img src={spinner} alt="loading" /> : null} */}
     </div>
