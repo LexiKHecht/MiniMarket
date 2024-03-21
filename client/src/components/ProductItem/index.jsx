@@ -8,7 +8,7 @@ function ProductItem(item) {
   const [state, dispatch] = useStoreContext();
 
   const {
-    image,
+    imageURL,
     name,
     _id,
     price,
@@ -43,7 +43,7 @@ function ProductItem(item) {
       <Link to={`/products/${_id}`}>
         <img
           alt={name}
-          src={`/images/${image}`}
+          src={`/images/${imageURL}`}
         />
         <p>{name}</p>
       </Link>
