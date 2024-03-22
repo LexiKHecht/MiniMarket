@@ -1,6 +1,7 @@
 ## RealStore
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 ## Description
+
 ## Table of Contents
 - [Description](#description)<br>
 - [Table of Contents](#tabel-of-contents)<br>
@@ -8,10 +9,8 @@
 - [Technologies](#technologies)<br>
 - [Packages](#packages)<br>
 - [License](#license)<br>
-- [Contributing](#contributing)<br>
-- [Tests](#tests)<br>
-- [Resources](#resources)<br>
 - [Questions/Contact](#questionscontact)
+- [Authors](#authors)
   ## Installation
   ## Technologies
   ## Packages
@@ -36,3 +35,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+## Questions and Contact
+If you have any questions about anythings our githubs are provided in the authors subtitle
+## Authors
+Conor Allen Github:(#callen996)
