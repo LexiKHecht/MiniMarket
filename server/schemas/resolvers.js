@@ -5,6 +5,16 @@ const stripe = require("stripe")("");
 // add in strip key^
 const resolvers = {
   Query: {
+    me: async (parent, args, context) => {
+      if (context.user) {
+        const userData = await User.findOne({ _id: context.user._id }).select(
+          "-__v -password"
+        );
+
+        return userData;
+      }
+      throw AuthenticationError;
+    },
     products: async (parent, { tag, name }) => {
       const params = {};
 
@@ -143,6 +153,7 @@ const resolvers = {
       return { token, user };
     },
     addThought: async (parent, { thoughtText, thoughtAuthor }) => {
+      console.log("in resolvers " + thoughtText + " " + thoughtAuthor);
       return Thought.create({ thoughtText, thoughtAuthor });
     },
     addComment: async (parent, { thoughtId, commentText }) => {
