@@ -30,7 +30,7 @@ db.once("open", async () => {
       product.price = product.variants.edges[0].node.price;
       return product;
     });
-    console.log(data);
+
     const loadedProductData = products.map((loadedProduct) => ({
       productId: loadedProduct.id,
       name: loadedProduct.title,
