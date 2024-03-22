@@ -29,6 +29,7 @@ type Price {
     username: String
     email: String
     orders: [Order]
+    thoughts: [Thought]
   }
 
   type Checkout {
@@ -68,6 +69,7 @@ type Price {
     product(_id: ID!): Product
     user: User
     users: [User]
+    me: User
 
     order(_id: ID!): Order
     checkout(products: [ProductInput]): Checkout
