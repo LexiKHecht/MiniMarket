@@ -1,5 +1,5 @@
 
-const { User, Product, Order } = require("../models");
+const { User, Product, Order, Thought } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
 const stripe = require("stripe")("");
 // add in strip key^
