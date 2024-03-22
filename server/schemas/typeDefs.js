@@ -64,7 +64,7 @@ type Price {
   }
 
   type Query {
-    products(tag: String, name: String): [Product]
+    products(tags: String, name: String): [Product]
     product(_id: ID!): Product
     user: User
     users: [User]

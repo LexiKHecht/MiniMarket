@@ -1,5 +1,5 @@
 import ProductList from "../components/ProductList";
-import CategoryMenu from "../components/CategoryMenu";
+// import CategoryMenu from "../components/CategoryMenu";
 import Cart from "../components/Cart";
 import ThoughtList from '../components/ThoughtList';
 import ThoughtForm from '../components/ThoughtForm';
@@ -15,7 +15,7 @@ const Home = () => {
 
   return (
     <div className="container">
-      <CategoryMenu />
+      {/* <CategoryMenu /> */}
       <ProductList />
       <div
           className="col-12 col-md-10 mb-3 p-3"

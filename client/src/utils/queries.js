@@ -3,13 +3,16 @@ import { gql } from "@apollo/client";
 export const QUERY_PRODUCTS = gql`
   query getProducts($tags: String) {
     products(tags: $tags) {
+      productId
       _id
       name
       description
-      price
+      price {
+        amount
+        currencyCode
+      }
       quantity
       imageURL
-      image
       tags
     }
   }
@@ -29,21 +32,24 @@ export const QUERY_ALL_PRODUCTS = gql`
       productId
       name
       description
-      price
+      imageURL
+      price {
+        amount
+        currencyCode
+      }
       quantity
-      tags 
+      tags
     }
   }
 `;
 
-export const QUERY_CATEGORIES = gql`
-  {
-    categories {
-      _id
-      name
-    }
-  }
-`;
+// export const QUERY_CATEGORIES = gql`
+//   {
+//     Tag {
+//       tags
+//     }
+//   }
+// `;
 
 export const QUERY_USER = gql`
   {
@@ -58,9 +64,12 @@ export const QUERY_USER = gql`
           _id
           name
           description
-          price
+          price {
+            amount
+            currencyCode
+          }
           quantity
-          image
+          imageURL
         }
       }
     }
