@@ -1,7 +1,6 @@
-
 const { User, Product, Order, Thought } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
-const stripe = require("stripe")("");
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 // add in strip key^
 const resolvers = {
   Query: {
@@ -98,6 +97,28 @@ const resolvers = {
     },
   },
   Mutation: {
+    processPayment: async (_, { amount, token }) => {
+      try {
+        // Create a charge using the Stripe API
+        const charge = await stripe.charges.create({
+          amount,
+          currency: "usd",
+          source: token, // Payment token received from client
+          description: "Payment for goods/services",
+        });
+
+        // Return success message or any relevant data
+        return {
+          success: true,
+          message: "Payment processed successfully",
+          chargeId: charge.id,
+        };
+      } catch (error) {
+        console.error("Stripe Payment Error:", error);
+        return { success: false, message: "Payment processing failed" };
+      }
+    },
+
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
@@ -177,9 +198,8 @@ const resolvers = {
         { $pull: { comments: { _id: commentId } } },
         { new: true }
       );
-    }
-  }
-
-  };
+    },
+  },
+};
 
 module.exports = resolvers;
