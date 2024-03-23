@@ -8,40 +8,44 @@ import { QUERY_THOUGHTS, QUERY_ME } from '../../utils/queries';
 import Auth from '../../utils/auth';
 
 const ThoughtForm = () => {
-  const { loading, data } = useQuery(QUERY_ME);
+  // const { loading, data } = useQuery(QUERY_ME);
 
-  console.log("DATA AFTER QUERY ME " + data);
+  // console.log("DATA AFTER QUERY ME " + data);
 
   const [thoughtText, setThoughtText] = useState('');
 
   const [characterCount, setCharacterCount] = useState(0);
 
-  const [addThought, { error }] = useMutation(ADD_THOUGHT);
+    const [addThought, { error }] = useMutation
+  (ADD_THOUGHT, {
+    refetchQueries: [
+      QUERY_THOUGHTS,
+      'getThoughts',
+      QUERY_ME,
+      'me'
+    ]
+  });
 
-  const userData = data?.me || {};
+  // const [addThought, { error }] = useMutation(ADD_THOUGHT);
 
-  console.log("USER DATA " + userData);
+  // const userData = data?.me || {};
 
-  // const [addThought, { error }] = useMutation
-  // (ADD_THOUGHT, {
-  //   refetchQueries: [
-  //     QUERY_THOUGHTS,
-  //     'getThoughts',
-  //     QUERY_ME,
-  //     'me'
-  //   ]
-  // });
+  // console.log("USER DATA " + userData + "AUTH USERNAME " + Auth.getProfile().data.username);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    if(!token){
+      return false;
+    }
 
     try {
       const { data } = await addThought({
         variables: {
           thoughtText,
           thoughtAuthor: Auth.getProfile().data.username,
-          // authorFirstName: Auth.getProfile.data.firstName,
-          // authorLastName: Auth.getProfile.data.lastName,
         },
       });
 
@@ -59,6 +63,10 @@ const ThoughtForm = () => {
       setCharacterCount(value.length);
     }
   };
+
+  // if(loading){
+  //   return <h2>LOADING...</h2>;
+  // }
 
   return (
     <div>

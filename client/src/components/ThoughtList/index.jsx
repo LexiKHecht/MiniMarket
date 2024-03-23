@@ -10,6 +10,8 @@ const ThoughtList = ({
     return <h3>No Thoughts Yet</h3>;
   }
 
+  console.log("IN THOUGHT LIST " + thoughts.length);
+
   return (
     <div>
       {showTitle && <h3>{title}</h3>}
