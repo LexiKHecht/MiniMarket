@@ -15,10 +15,16 @@
   "author": "Conor, Jessica, Lexi, Nicholas, Matthew",
   "license": "MIT",
   "devDependencies": {
+    "@headlessui/react": "^1.7.18",
     "concurrently": "^5.1.0",
     "daisyui": "4.7.3",
     "nodemon": "^3.0.3",
-    "tailwindcss": "^3.4.1",
-    "@headlessui/react": "^1.7.18"
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.12",
+    "tailwindcss": "^3.4.1"
+  },
+  "dependencies": {
+    "@stripe/react-stripe-js": "^2.6.2",
+    "@stripe/stripe-js": "^3.0.10"
   }
 }

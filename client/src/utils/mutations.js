@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const LOGIN = gql`
   mutation login($email: String!, $password: String!) {
@@ -79,6 +79,16 @@ export const ADD_COMMENT = gql`
         commentText
         createdAt
       }
+    }
+  }
+`;
+
+export const PROCESS_PAYMENT_MUTATION = gql`
+  mutation ProcessPayment($amount: Int!, $token: String!) {
+    processPayment(amount: $amount, token: $token) {
+      success
+      message
+      chargeId
     }
   }
 `;
