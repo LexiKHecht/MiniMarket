@@ -29,6 +29,7 @@ type Price {
     username: String
     email: String
     orders: [Order]
+    thoughts: [Thought]
   }
 
   type Checkout {
@@ -68,12 +69,18 @@ type Price {
     product(_id: ID!): Product
     user: User
     users: [User]
+    me: User
 
     order(_id: ID!): Order
     checkout(products: [ProductInput]): Checkout
     thoughts: [Thought]!
     thought(thoughtId: ID!): Thought
   }
+  type PaymentResult {
+    success: Boolean!
+    message: String!
+    chargeId: String
+    }
 
   type Mutation {
     addUser(firstName: String!, lastName: String!, username: String!, email: String!, password: String!): Auth
@@ -85,6 +92,8 @@ type Price {
     addComment(thoughtId: ID!, commentText: String!): Thought
     removeThought(thoughtId: ID!): Thought
     removeComment(thoughtId: ID!, commentId: ID!): Thought
+    processPayment(amount: Int!, token: String!): PaymentResult!
+
   }
 `;
 
