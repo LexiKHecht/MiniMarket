@@ -13,7 +13,6 @@ import { ShoppingCartIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 import { Link, useLocation } from "react-router-dom";
 
-
 // stripePromise returns a promise with the stripe object as soon as the Stripe package loads
 const stripePromise = loadStripe('pk_test_51OxEMn03j4g81fJaMNNFMeNP5ktsatlYSVDrRZ6JANykfInoEwQx3BDPcD7u2Ch6MAodrTkE7RZHiEzkwVeqgvjj00en91rT1I');
 
@@ -61,15 +60,11 @@ const Cart = () => {
   // When the submit checkout method is invoked, loop through each item in the cart
   // Add each item id to the productIds array and then invoke the getCheckout query passing an object containing the id for all our products
   function submitCheckout() {
-
     getCheckout({
       variables: { 
         products: [...state.cart],
       },
     });
-        console.log("cart" + getCheckout)
-
-
   }
 
   if (!state.cartOpen) {
@@ -90,33 +85,29 @@ const Cart = () => {
       <h2 className="text-darkGray dark:text-white">Cart</h2>
 
       {state.cart.length ? (
-
-        <div className="flex-row  bg-palePurple rounded-t-lg text-darkGray dark:text-white">
+        <>
           {state.cart.map((item) => (
             <CartItem key={item._id} item={item} />
           ))}
 
           <div className="flex-row space-between p-2 border-t-2 border-offWhite bg-palePurple text-darkGray dark:text-white">
-
             <strong>Total: ${calculateTotal()}</strong>
             {/* Check to see if the user is logged in. If so render a button to check out */}
             {Auth.loggedIn() ? (
-
-                  <Link
-                    className="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80"
+              <Link
+                className="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80"
                 to="/Checkout"
                 onClick={submitCheckout}
-                  >
-                  Checkout
-                  </Link>
-              
+              >
+                Checkout
+              </Link>
             ) : (
               <span>(log in to check out)</span>
             )}
           </div>
-          </>
+        </>
       ) : (
-        <h3 className=" bg-palePurple rounded-t-lg text-darkGray dark:text-white">
+        <h3 className="bg-palePurple rounded-t-lg text-darkGray dark:text-white">
           Cart Empty
         </h3>
       )}
