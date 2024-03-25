@@ -81,12 +81,12 @@ const Cart = () => {
       <h2 className="text-darkGray dark:text-white">Cart</h2>
 
       {state.cart.length ? (
-        <div>
+        <div className="flex-row  bg-palePurple rounded-t-lg text-darkGray dark:text-white">
           {state.cart.map((item) => (
             <CartItem key={item._id} item={item} />
           ))}
 
-          <div className="flex-row space-between text-darkGray dark:text-white">
+          <div className="flex-row space-between p-2 border-t-2 border-offWhite bg-palePurple text-darkGray dark:text-white">
             <strong>Total: ${calculateTotal()}</strong>
 
             {/* Check to see if the user is logged in. If so render a button to check out */}
