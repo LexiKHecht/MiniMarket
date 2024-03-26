@@ -7,13 +7,17 @@
 - [Table of Contents](#tabel-of-contents)<br>
 - [Installation](#installation)<br>
 - [Technologies](#technologies)<br>
-- [Packages](#packages)<br>
 - [License](#license)<br>
 - [Questions/Contact](#questionscontact)
 - [Authors](#authors)
   ## Installation
+  We used render to deploy this application
+  Link:
   ## Technologies
-  ## Packages
+  PNPM
+  React
+  MongoDB
+  Apollo Server
   ## License
   MIT License
 Copyright (c) 2024 Lexi Hecht, Conor Allen, Jessica Wey, Matthew Scott, Nicholas Attaway
@@ -38,4 +42,8 @@ SOFTWARE.
 ## Questions and Contact
 If you have any questions about anythings our githubs are provided in the authors subtitle
 ## Authors
-Conor Allen Github:(#callen996)
+Conor Allen GitHub:("https://github.com/callen996")
+Lexi Hecht GitHub: ("https://github.com/LexiKHecht")
+Matthew Scott GitHub:("https://github.com/MScott-Dev")
+Nicholas Attaway GitHub:("https://github.com/Dev-Attaway")
+Jessica Wey GitHub:("https://github.com/jessicanwey")

@@ -180,6 +180,11 @@ const resolvers = {
     removeThought: async (parent, { thoughtId }) => {
       return Thought.findOneAndDelete({ _id: thoughtId });
     },
+    addListing: async (parent, args) => {
+      const product = await Product.create(args);
+      
+      return product;
+    },
   },
 };
 

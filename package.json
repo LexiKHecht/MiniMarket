@@ -25,6 +25,8 @@
   },
   "dependencies": {
     "@stripe/react-stripe-js": "^2.6.2",
-    "@stripe/stripe-js": "^3.0.10"
+    "@stripe/stripe-js": "^3.0.10",
+    "tailwindcss": "^3.4.1",
+    "react-file-base64": "^1.0.3"
   }
 }
