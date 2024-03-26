@@ -83,6 +83,7 @@ export const QUERY_THOUGHTS = gql`
       thoughtText
       thoughtAuthor
       createdAt
+      productId
     }
   }
 `;
@@ -94,12 +95,7 @@ export const QUERY_SINGLE_THOUGHT = gql`
       thoughtText
       thoughtAuthor
       createdAt
-      comments {
-        _id
-        commentText
-        commentAuthor
-        createdAt
-      }
+      productId
     }
   }
 `;
@@ -115,6 +111,7 @@ export const QUERY_ME = gql`
         thoughtText
         thoughtAuthor
         createdAt
+        productId
       }
     }
   }

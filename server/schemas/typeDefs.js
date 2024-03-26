@@ -55,13 +55,6 @@ type Price {
     thoughtText: String
     thoughtAuthor: String
     createdAt: String
-    comments: [Comment]!
-  }
-
-  type Comment {
-    _id: ID
-    commentText: String
-    createdAt: String
   }
 
   type Query {
@@ -88,10 +81,8 @@ type Price {
     updateUser(firstName: String, lastName: String, username: String, email: String, password: String): User
     updateProduct(_id: ID!, quantity: Int!): Product
     login(email: String!, password: String!): Auth
-    addThought(thoughtText: String!, thoughtAuthor: String!): Thought
-    addComment(thoughtId: ID!, commentText: String!): Thought
+    addThought(thoughtText: String!, thoughtAuthor: String!, productId: String!): Thought
     removeThought(thoughtId: ID!): Thought
-    removeComment(thoughtId: ID!, commentId: ID!): Thought
     processPayment(amount: Int!, token: String!): PaymentResult!
 
   }

@@ -7,7 +7,8 @@ import { QUERY_THOUGHTS, QUERY_ME } from '../../utils/queries';
 
 import Auth from '../../utils/auth';
 
-const ThoughtForm = () => {
+function ThoughtForm(productId){
+
   // const { loading, data } = useQuery(QUERY_ME);
 
   // console.log("DATA AFTER QUERY ME " + data);
@@ -16,8 +17,7 @@ const ThoughtForm = () => {
 
   const [characterCount, setCharacterCount] = useState(0);
 
-    const [addThought, { error }] = useMutation
-  (ADD_THOUGHT, {
+    const [addThought, { error }] = useMutation (ADD_THOUGHT, {
     refetchQueries: [
       QUERY_THOUGHTS,
       'getThoughts',
@@ -46,6 +46,7 @@ const ThoughtForm = () => {
         variables: {
           thoughtText,
           thoughtAuthor: Auth.getProfile().data.username,
+          productId
         },
       });
 
