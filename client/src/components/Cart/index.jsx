@@ -19,13 +19,22 @@ const Cart = () => {
 
   // We check to see if there is a data object that exists, if so this means that a checkout session was returned from the backend
   // Then we should redirect to the checkout with a reference to our session id
-  useEffect(() => {
-    if (data) {
-      stripePromise.then((res) => {
-        res.redirectToCheckout({ sessionId: data.checkout.session });
-      });
-    }
-  }, [data]);
+useEffect(() => {
+  if (!data) {
+    // Data is null or undefined, handle loading state or error condition
+    console.log("Data is null or undefined");
+    return;
+  }
+
+  // Data is available, proceed with redirect logic
+  console.log("Data:", data);
+  if (data.checkout && data.checkout.session) {
+    stripePromise.then((res) => {
+      console.log("Redirecting to checkout...");
+      res.redirectToCheckout({ sessionId: data.checkout.session });
+    });
+  }
+}, [data]);
 
   // If the cart's length or if the dispatch function is updated, check to see if the cart is empty.
   // If so, invoke the getCart method and populate the cart with the existing from the session
@@ -33,8 +42,9 @@ const Cart = () => {
     async function getCart() {
       const cart = await idbPromise('cart', 'get');
       dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
+      console.log(cart)
     }
-
+    
     if (!state.cart.length) {
       getCart();
     }
@@ -61,6 +71,7 @@ const Cart = () => {
         products: [...state.cart],
       },
     });
+    
   }
 
   if (!state.cartOpen) {
