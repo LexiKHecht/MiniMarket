@@ -99,7 +99,7 @@ type Price {
     removeComment(thoughtId: ID!, commentId: ID!): Thought
     processPayment(amount: Int!, token: String!): PaymentResult!
 
-    addListing(name: String!, description: String!, imageURL: String!, quantity: Int!, price: PriceInput, tags: [String]!): Product
+    addListing(name: String!, description: String!, imageURL: String!, quantity: Int!, price: PriceInput, tags: [String]): Product
   }
 `;
 

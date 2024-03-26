@@ -30,7 +30,6 @@ const productSchema = new Schema({
   tags: [
     {
       type: String,
-      required: true,
     },
   ],
 });

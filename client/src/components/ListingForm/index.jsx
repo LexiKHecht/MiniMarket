@@ -88,19 +88,7 @@ function ListingForm() {
                 />
             </div>
           </div>
-          <div className="ml-5">
-              <div className="mb-5  w-full">
-                  <label className="block text-sm font-medium text-gray-600" htmlFor="pwd">Tags</label>
-                  <input
-                  className="mt-1 p-2 border-2 border-palePurple rounded-md shadow-lg w-48 sm:w-56 md:w-72 lg:w-96"
-                  placeholder="1"
-                  name="tags"
-                  type="tags"
-                  id="tags"
-                  onChange={handleChange}
-                  />
-              </div>
-          </div>
+          
           <div className="ml-5">
             <div className="mb-5  w-full">
                 <label className="block text-sm font-medium text-gray-600" htmlFor="email">Price</label>

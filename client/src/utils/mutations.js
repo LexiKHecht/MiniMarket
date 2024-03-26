@@ -98,7 +98,7 @@ export const NEW_LISTING = gql`
     $description: String!
     $imageURL: String!
     $quantity: Int!
-    $tags: [String]!
+    $tags: [String]
     $price: PriceInput
   ) {
     addListing(
