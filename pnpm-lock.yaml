@@ -12,6 +12,11 @@ dependencies:
     specifier: ^3.0.10
     version: 3.0.10
 
+dependencies:
+  react-file-base64:
+    specifier: ^1.0.3
+    version: 1.0.3(react@18.2.0)
+
 devDependencies:
   '@headlessui/react':
     specifier: ^1.7.18
@@ -985,6 +990,14 @@ packages:
 
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
+    dev: false
+
+  /react-file-base64@1.0.3(react@18.2.0):
+    resolution: {integrity: sha512-itGMFH6IkJUZF2p0YXQnUBqzUHFaMYcs+ssD9e4j1XJGHRibGe8kiLr6y46oAIw1JknX/bJUUogDJOk/o91TMg==}
+    peerDependencies:
+      react: ^15.0.2
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /react@18.2.0:

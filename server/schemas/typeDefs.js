@@ -46,7 +46,7 @@ type Price {
     purchaseQuantity: Int
     name: String
     imageURL: String
-    price: Float
+    price: PriceInput
     quantity: Int
   }
 
@@ -63,6 +63,11 @@ type Price {
     commentText: String
     createdAt: String
   }
+
+  input PriceInput {
+    amount: String
+    currencyCode: String
+}
 
   type Query {
     products(tags: String, name: String): [Product]
@@ -94,6 +99,7 @@ type Price {
     removeComment(thoughtId: ID!, commentId: ID!): Thought
     processPayment(amount: Int!, token: String!): PaymentResult!
 
+    addListing(name: String!, description: String!, imageURL: String!, quantity: Int!, price: PriceInput, tags: [String]!): Product
   }
 `;
 

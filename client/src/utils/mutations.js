@@ -92,3 +92,32 @@ export const PROCESS_PAYMENT_MUTATION = gql`
     }
   }
 `;
+export const NEW_LISTING = gql`
+  mutation addListing(
+    $name: String!
+    $description: String!
+    $imageURL: String!
+    $quantity: Int!
+    $tags: [String]!
+    $price: PriceInput
+  ) {
+    addListing(
+      name: $name
+      description: $description
+      imageURL: $imageURL
+      quantity: $quantity
+      tags: $tags
+      price: $price
+    ) {
+      name
+      description
+      imageURL
+      quantity
+      tags
+      price {
+        amount
+        currencyCode
+      }
+    }
+  }
+`;
