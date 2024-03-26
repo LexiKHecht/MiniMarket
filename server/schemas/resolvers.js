@@ -199,6 +199,11 @@ const resolvers = {
         { new: true }
       );
     },
+    addListing: async (parent, args) => {
+      const product = await Product.create(args);
+      
+      return product;
+    },
   },
 };
 
