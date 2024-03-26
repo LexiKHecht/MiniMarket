@@ -173,31 +173,12 @@ const resolvers = {
 
       return { token, user };
     },
-    addThought: async (parent, { thoughtText, thoughtAuthor }) => {
-      console.log("in resolvers " + thoughtText + " " + thoughtAuthor);
-      return Thought.create({ thoughtText, thoughtAuthor });
-    },
-    addComment: async (parent, { thoughtId, commentText }) => {
-      return Thought.findOneAndUpdate(
-        { _id: thoughtId },
-        {
-          $addToSet: { comments: { commentText } },
-        },
-        {
-          new: true,
-          runValidators: true,
-        }
-      );
+    addThought: async (parent, { thoughtText, thoughtAuthor, productId }) => {
+      console.log("in resolvers " + thoughtText + " " + thoughtAuthor + " " + productId);
+      return Thought.create({ thoughtText, thoughtAuthor, productId });
     },
     removeThought: async (parent, { thoughtId }) => {
       return Thought.findOneAndDelete({ _id: thoughtId });
-    },
-    removeComment: async (parent, { thoughtId, commentId }) => {
-      return Thought.findOneAndUpdate(
-        { _id: thoughtId },
-        { $pull: { comments: { _id: commentId } } },
-        { new: true }
-      );
     },
     addListing: async (parent, args) => {
       const product = await Product.create(args);

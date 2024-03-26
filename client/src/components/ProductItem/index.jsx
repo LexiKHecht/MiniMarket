@@ -11,7 +11,7 @@ import { QUERY_THOUGHTS } from "../../utils/queries";
 
 
 function ProductItem(item) {
-  const [state, dispatch] = useStoreContext();
+ const [state, dispatch] = useStoreContext();
 
  const { data } = useQuery(QUERY_THOUGHTS);
 
@@ -170,7 +170,9 @@ function ProductItem(item) {
         className="col-12 col-md-10 mb-3 p-3 rounded-b-lg bg-gray-100"
         style={{ border: "3px solid #bbafdb " }}
       >
-        <ThoughtForm />
+        <ThoughtForm 
+          productId={item._id}
+        />
       </div>
       <div>
         <ThoughtList
