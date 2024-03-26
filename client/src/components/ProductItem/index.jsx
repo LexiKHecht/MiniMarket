@@ -104,7 +104,6 @@ function ProductItem(item) {
                     name="size"
                     type="radio"
                     value="m"
-                    checked
                   />
                   <div className="w-9 h-9 rounded-lg flex items-center justify-center text-slate-700 peer-checked:font-semibold peer-checked:bg-palePurple peer-checked:text-white">
                     M
