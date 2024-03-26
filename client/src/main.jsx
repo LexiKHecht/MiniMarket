@@ -11,7 +11,6 @@ import Signup from './pages/Signup';
 import Success from './pages/Success';
 import OrderHistory from './pages/OrderHistory';
 import SingleThought from './pages/SingleThought.jsx';
-import Checkout from './pages/Checkout.jsx';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -39,9 +38,6 @@ const router = createBrowserRouter([
       }, {
         path: '/thoughts/:thoughtId',
         element: <SingleThought />
-      }, {
-        path: '/Checkout',
-        element: <Checkout />
       }
     ]
   }

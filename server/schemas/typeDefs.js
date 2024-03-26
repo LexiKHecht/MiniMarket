@@ -12,7 +12,7 @@ const typeDefs = `
   }
 
 type Price {
-  amount: String
+  amount: Float
   currencyCode: String
 }
 
