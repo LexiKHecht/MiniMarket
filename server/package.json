@@ -8,8 +8,8 @@
     "watch": "nodemon"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Conor Allen, Lexi Hecht, Jessica Wey, Matthew Scott, Nicholas Attaway",
+  "license": "MIT",
   "dependencies": {
     "@apollo/server": "^4.7.2",
     "bcrypt": "^4.0.1",
