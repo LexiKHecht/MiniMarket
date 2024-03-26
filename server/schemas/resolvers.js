@@ -57,37 +57,47 @@ const resolvers = {
       throw AuthenticationError;
     },
     checkout: async (parent, args, context) => {
-      const url = new URL(context.headers.referer).origin;
-      await Order.create({ products: args.products.map(({ _id }) => _id) });
-      // eslint-disable-next-line camelcase
-      const line_items = [];
+  try {
+    const url = new URL(context.headers.referer).origin;
 
-      // eslint-disable-next-line no-restricted-syntax
-      for (const product of args.products) {
-        line_items.push({
-          price_data: {
-            currency: "usd",
-            product_data: {
-              name: product.name,
-              description: product.description,
-              images: [`${url}/images/${product.image}`],
-            },
-            unit_amount: product.price * 100,
+    await Order.create({ products: args.products.map(({ productId}) => productId) });
+    const line_items = [];
+    // Iterate over products to create line items
+    for (const product of args.products) {
+      line_items.push({
+        price_data: {
+          currency: "usd",
+          product_data: {
+            name: product.name,
+            description: product.description,
+            images: [`${url}/images/${product.image}`],
           },
-          quantity: product.purchaseQuantity,
-        });
-      }
-
-      const session = await stripe.checkout.sessions.create({
-        payment_method_types: ["card"],
-        line_items,
-        mode: "payment",
-        success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${url}/`,
+          unit_amount: product.price * 100, // Assuming price is in dollars
+        },
+        quantity: product.purchaseQuantity,
       });
+      console.log(line_items[0].product_data)
+    }
 
-      return { session: session.id };
-    },
+    // Create checkout session with Stripe API
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ["card"],
+      line_items,
+      mode: "payment",
+      success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${url}/`,
+    });
+
+    // Return the session ID
+    return { session: session.id };
+  } catch (error) {
+    // Log the error for debugging purposes
+    console.error("Error in checkout resolver:", error);
+
+    // Handle the error gracefully and return an error response
+    throw new Error("An error occurred during checkout. Please try again.");
+  }
+},
     thoughts: async () => {
       return Thought.find().sort({ createdAt: -1 });
     },

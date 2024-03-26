@@ -43,13 +43,6 @@ export const QUERY_ALL_PRODUCTS = gql`
   }
 `;
 
-// export const QUERY_CATEGORIES = gql`
-//   {
-//     Tag {
-//       tags
-//     }
-//   }
-// `;
 
 export const QUERY_USER = gql`
   {

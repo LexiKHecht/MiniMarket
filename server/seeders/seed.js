@@ -1,51 +1,46 @@
-const db = require("../config/connection");
-const { User /* Thought */, Product } = require("../models");
-const userSeeds = require("./userSeeds.json");
-// const thoughtSeeds = require("./thoughtSeeds.json");
-const cleanDB = require("../config/cleanDB");
+const db = require('../config/connection');
+const { User, Product } = require('../models');
+const cleanDB = require('../config/cleanDB');
 
-db.once("open", async () => {
-  // we need
-  await cleanDB("User", "users");
-  try {
-    await User.create(userSeeds);
-    console.log("Collection cleaned successfully.");
-  } catch (err) {
-    console.error("Error cleaning collection:", err);
-  }
+db.once('open', async () => {
+  // Clean existing data from Product and User collections
+  await cleanDB('Product', 'products');
+  await cleanDB('User', 'users');
 
-  await cleanDB("Product", "products");
+  console.log('Collections cleaned.');
+
   try {
-    const request = await fetch(
+    // Fetch product data from the mock shop API
+    const response = await fetch(
       "https://mock.shop/api?query={products(first:%2020){edges%20{node%20{id%20title%20description%20tags%20featuredImage%20{id%20url}%20variants(first:%203){edges%20{node%20{price%20{amount%20currencyCode}}}}}}}}",
-    );
-
-    if (!request.ok) {
-      throw new Error("something went wrong!");
+    );    
+    if (!response.ok) {
+      throw new Error('Failed to fetch product data from the API.');
     }
 
-    const { data } = await request.json();
-    const products = data.products.edges.map((edge) => {
+    const { data } = await response.json();
+    
+    // Process the fetched product data
+    const products = data.products.edges.map(edge => {
       const product = edge.node;
-      product.price = product.variants.edges[0].node.price;
-      return product;
+      const priceAmountString = product.variants.edges[0].node.price.amount;
+
+      return {
+        productId: product.id,
+        name: product.title,
+        description: product.description,
+        imageURL: product.featuredImage.url || '',
+        tags: product.tags,
+        price: priceAmountString,
+      };
     });
 
-    const loadedProductData = products.map((loadedProduct) => ({
-      productId: loadedProduct.id,
-      name: loadedProduct.title,
-      description: loadedProduct.description, // You may need to adjust this depending on the actual response structure
-      imageURL: loadedProduct.featuredImage.url || "",
-      tags: loadedProduct.tags,
-      price: loadedProduct.price,
-    }));
-
-    console.log(loadedProductData);
-
-    await Product.insertMany(loadedProductData);
-  } catch (err) {
-    console.error(err);
+    // Insert the processed product data into the Product collection
+    await Product.insertMany(products);
+    console.log('Products seeded successfully.' +" "+ products[0].price);
+  } catch (error) {
+    console.error('Error seeding products:', error);
   }
-  console.log("all done!");
-  process.exit(0);
+
+  process.exit(0); // Exit the process once seeding is complete
 });
