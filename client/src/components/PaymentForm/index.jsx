@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
@@ -9,7 +9,7 @@ const CARD_OPTIONS = {
   style: {
     base: {
       iconColor: "#c4f0ff",
-      color: "#fff",
+      color: "#000",
       background: "#fce883",
       fontWeight: 500,
       fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
