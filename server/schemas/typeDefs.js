@@ -57,9 +57,9 @@ type Price {
     createdAt: String
   }
 
-input PriceInput {
-  amount: Float!
-  currencyCode: String!
+  input PriceInput {
+    amount: String
+    currencyCode: String
 }
 
   type Query {

@@ -76,7 +76,6 @@ const resolvers = {
         },
         quantity: product.purchaseQuantity,
       });
-      console.log(line_items[0].product_data)
     }
 
     // Create checkout session with Stripe API

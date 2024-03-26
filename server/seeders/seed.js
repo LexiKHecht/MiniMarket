@@ -24,20 +24,25 @@ db.once('open', async () => {
     const products = data.products.edges.map(edge => {
       const product = edge.node;
       const priceAmountString = product.variants.edges[0].node.price.amount;
-
       return {
         productId: product.id,
         name: product.title,
         description: product.description,
         imageURL: product.featuredImage.url || '',
         tags: product.tags,
-        price: priceAmountString,
+        price: {
+          amount: parseFloat(priceAmountString)
+        },
       };
     });
 
+    for (const product of products) {
+      console.log(product);
+    }
+
     // Insert the processed product data into the Product collection
     await Product.insertMany(products);
-    console.log('Products seeded successfully.' +" "+ products[0].price);
+    console.log('Products seeded successfully. Price:', products[0].price.amount);
   } catch (error) {
     console.error('Error seeding products:', error);
   }
