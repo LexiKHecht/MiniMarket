@@ -50,7 +50,7 @@ function ProductItem(item) {
 
   return (
     <div className="m-2">
-      <div className="flex max-h-screen max-w-screen items-center justify-center bg-gray-100">
+      <div className="flex max-h-screen max-w-screen items-center justify-center bg-gray-100 dark:bg-darkGray">
         <div className="flex font-sans">
           <div className="flex-none w-48 relative">
             <Link to={`/products/${_id}`}>
@@ -64,17 +64,17 @@ function ProductItem(item) {
           </div>
           <form className="flex-auto p-6">
             <div className="flex flex-wrap">
-              <h1 className="flex-auto text-xl font-semibold text-gray-900">
+              <h1 className="flex-auto text-xl font-semibold text-gray-900 dark:text-offWhite">
                 {name}
               </h1>
-              <div className="text-lg font-semibold text-black-500">
+              <div className="text-lg font-semibold text-black-500 dark:text-offWhite">
                 ${price}
               </div>
-              <div className="w-full flex-none text-sm font-medium text-black-700 mt-2">
+              <div className="w-full flex-none text-sm font-medium text-black-700 mt-2 dark:text-offWhite">
                 In stock
               </div>
             </div>
-            <div className="flex items-baseline mt-4 mb-6 pb-6 border-b border-slate-200">
+            <div className="flex items-baseline mt-4 mb-6 pb-6 border-b border-slate-200 dark:border-palePurple">
               <div className="space-x-2 flex text-sm">
                 <label>
                   <input
@@ -83,7 +83,7 @@ function ProductItem(item) {
                     type="radio"
                     value="xs"
                   />
-                  <div className="w-9 h-9 rounded-lg flex items-center justify-center text-slate-700 peer-checked:font-semibold peer-checked:bg-palePurple peer-checked:text-white">
+                  <div className="w-9 h-9 rounded-lg flex items-center justify-center text-slate-700 peer-checked:font-semibold peer-checked:bg-palePurple peer-checked:text-white dark:text-offWhite">
                     XS
                   </div>
                 </label>
@@ -94,7 +94,7 @@ function ProductItem(item) {
                     type="radio"
                     value="s"
                   />
-                  <div className="w-9 h-9 rounded-lg flex items-center justify-center text-slate-700 peer-checked:font-semibold peer-checked:bg-palePurple peer-checked:text-white">
+                  <div className="w-9 h-9 rounded-lg flex items-center justify-center text-slate-700 peer-checked:font-semibold peer-checked:bg-palePurple peer-checked:text-white dark:text-offWhite">
                     S
                   </div>
                 </label>
@@ -105,7 +105,7 @@ function ProductItem(item) {
                     type="radio"
                     value="m"
                   />
-                  <div className="w-9 h-9 rounded-lg flex items-center justify-center text-slate-700 peer-checked:font-semibold peer-checked:bg-palePurple peer-checked:text-white">
+                  <div className="w-9 h-9 rounded-lg flex items-center justify-center text-slate-700 peer-checked:font-semibold peer-checked:bg-palePurple peer-checked:text-white dark:text-offWhite">
                     M
                   </div>
                 </label>
@@ -116,7 +116,7 @@ function ProductItem(item) {
                     type="radio"
                     value="l"
                   />
-                  <div className="w-9 h-9 rounded-lg flex items-center justify-center text-slate-700 peer-checked:font-semibold peer-checked:bg-palePurple peer-checked:text-white">
+                  <div className="w-9 h-9 rounded-lg flex items-center justify-center text-slate-700 peer-checked:font-semibold peer-checked:bg-palePurple peer-checked:text-white dark:text-offWhite">
                     L
                   </div>
                 </label>
@@ -127,7 +127,7 @@ function ProductItem(item) {
                     type="radio"
                     value="xl"
                   />
-                  <div className="w-9 h-9 rounded-lg flex items-center justify-center text-slate-700 peer-checked:font-semibold peer-checked:bg-palePurple peer-checked:text-white">
+                  <div className="w-9 h-9 rounded-lg flex items-center justify-center text-slate-700 peer-checked:font-semibold peer-checked:bg-palePurple peer-checked:text-white dark:text-offWhite">
                     XL
                   </div>
                 </label>
@@ -137,7 +137,7 @@ function ProductItem(item) {
               <div className="flex-auto flex space-x-4">
                 <button
                   onClick={addToCart}
-                  className="h-10 px-6 font-semibold rounded-md border border-balck-800 text-gray-900"
+                  className="h-10 px-6 font-semibold rounded-md border border-balck-800 text-gray-900 dark:text-offWhite"
                   type="button"
                 >
                   Add to cart
@@ -162,7 +162,7 @@ function ProductItem(item) {
                 </svg>
               </button>
             </div>
-            <p className="text-sm text-slate-700">Free shipping</p>
+            <p className="text-sm text-slate-700 dark:text-offWhite">Free shipping</p>
           </form>
         </div>
       </div>
