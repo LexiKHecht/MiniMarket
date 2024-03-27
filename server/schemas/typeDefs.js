@@ -42,6 +42,7 @@ const typeDefs = `
     imageURL: String
     price: Float
     quantity: Int
+    productId: String
   }
 
   type Thought {
