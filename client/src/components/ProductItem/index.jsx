@@ -20,6 +20,7 @@ function ProductItem(item) {
     name,
     _id,
     price,
+    productId
     // quantity -can't get this working :(
   } = item;
 
@@ -171,7 +172,7 @@ function ProductItem(item) {
         style={{ border: "3px solid #bbafdb " }}
       >
         <ThoughtForm 
-          productId={item._id}
+          product={item}
         />
       </div>
       <div>

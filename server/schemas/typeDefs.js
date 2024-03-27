@@ -55,6 +55,7 @@ type Price {
     thoughtText: String
     thoughtAuthor: String
     createdAt: String
+    productId: String
   }
 
   input PriceInput {

@@ -58,6 +58,7 @@ function ProductList() {
               name={product.name}
               price={product.price.amount}
               quantity={product.quantity}
+              productId={product._id}
             />
           ))}
         </div>

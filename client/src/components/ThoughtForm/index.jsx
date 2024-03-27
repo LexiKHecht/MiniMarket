@@ -7,11 +7,13 @@ import { QUERY_THOUGHTS, QUERY_ME } from '../../utils/queries';
 
 import Auth from '../../utils/auth';
 
-function ThoughtForm(productId){
+function ThoughtForm(item){
 
   // const { loading, data } = useQuery(QUERY_ME);
 
   // console.log("DATA AFTER QUERY ME " + data);
+
+  const productId = item.product.productId;
 
   const [thoughtText, setThoughtText] = useState('');
 
