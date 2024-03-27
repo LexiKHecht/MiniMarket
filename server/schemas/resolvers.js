@@ -7,7 +7,7 @@ const resolvers = {
     me: async (parent, args, context) => {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id }).select(
-          "-__v -password"
+          "-__v -password",
         );
 
         return userData;
@@ -57,46 +57,48 @@ const resolvers = {
       throw AuthenticationError;
     },
     checkout: async (parent, args, context) => {
-  try {
-    const url = new URL(context.headers.referer).origin;
+      try {
+        const url = new URL(context.headers.referer).origin;
 
-    await Order.create({ products: args.products.map(({ productId}) => productId) });
-    const line_items = [];
-    // Iterate over products to create line items
-    for (const product of args.products) {
-      line_items.push({
-        price_data: {
-          currency: "usd",
-          product_data: {
-            name: product.name,
-            description: product.description,
-            images: [`${url}/images/${product.image}`],
-          },
-          unit_amount: product.price * 100, // Assuming price is in dollars
-        },
-        quantity: product.purchaseQuantity,
-      });
-    }
+        await Order.create({
+          products: args.products.map(({ productId }) => productId),
+        });
+        const line_items = [];
+        // Iterate over products to create line items
+        for (const product of args.products) {
+          line_items.push({
+            price_data: {
+              currency: "usd",
+              product_data: {
+                name: product.name,
+                description: product.description,
+                images: [`${url}/images/${product.image}`],
+              },
+              unit_amount: product.price * 100, // Assuming price is in dollars
+            },
+            quantity: product.purchaseQuantity,
+          });
+        }
 
-    // Create checkout session with Stripe API
-    const session = await stripe.checkout.sessions.create({
-      payment_method_types: ["card"],
-      line_items,
-      mode: "payment",
-      success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${url}/`,
-    });
+        // Create checkout session with Stripe API
+        const session = await stripe.checkout.sessions.create({
+          payment_method_types: ["card"],
+          line_items,
+          mode: "payment",
+          success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+          cancel_url: `${url}/`,
+        });
 
-    // Return the session ID
-    return { session: session.id };
-  } catch (error) {
-    // Log the error for debugging purposes
-    console.error("Error in checkout resolver:", error);
+        // Return the session ID
+        return { session: session.id };
+      } catch (error) {
+        // Log the error for debugging purposes
+        console.error("Error in checkout resolver:", error);
 
-    // Handle the error gracefully and return an error response
-    throw new Error("An error occurred during checkout. Please try again.");
-  }
-},
+        // Handle the error gracefully and return an error response
+        throw new Error("An error occurred during checkout. Please try again.");
+      }
+    },
     thoughts: async () => {
       return Thought.find().sort({ createdAt: -1 });
     },
@@ -162,7 +164,7 @@ const resolvers = {
       return await Product.findByIdAndUpdate(
         _id,
         { $inc: { quantity: decrement } },
-        { new: true }
+        { new: true },
       );
     },
     login: async (parent, { email, password }) => {
@@ -183,7 +185,9 @@ const resolvers = {
       return { token, user };
     },
     addThought: async (parent, { thoughtText, thoughtAuthor, productId }) => {
-      console.log("in resolvers " + thoughtText + " " + thoughtAuthor + " " + productId);
+      console.log(
+        "in resolvers " + thoughtText + " " + thoughtAuthor + " " + productId,
+      );
       return Thought.create({ thoughtText, thoughtAuthor, productId });
     },
     removeThought: async (parent, { thoughtId }) => {
@@ -191,7 +195,7 @@ const resolvers = {
     },
     addListing: async (parent, args) => {
       const product = await Product.create(args);
-      
+
       return product;
     },
   },

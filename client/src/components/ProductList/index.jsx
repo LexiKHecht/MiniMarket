@@ -46,10 +46,6 @@ function ProductList() {
     );
   }
 
-
-
-
-
   return (
     <div className="flex justify-center pt-6 mb-2">
       {state.products.length ? (

@@ -13,7 +13,7 @@ import { QUERY_THOUGHTS } from "../../utils/queries";
 function ProductItem(item) {
  const [state, dispatch] = useStoreContext();
 
- const { data } = useQuery(QUERY_THOUGHTS);
+//  const { data } = useQuery(QUERY_THOUGHTS);
 
   const {
     imageURL,
@@ -46,7 +46,7 @@ function ProductItem(item) {
     }
   }
 
-    const thoughts = data?.thoughts || [];
+    // const thoughts = data?.thoughts || [];
 
   return (
     <div className="m-2">
@@ -175,11 +175,11 @@ function ProductItem(item) {
         />
       </div>
       <div>
-        <ThoughtList
+        {/* <ThoughtList
           className=""
           thoughts={thoughts}
           title="Some Feed for Thought(s)..."
-        />
+        /> */}
       </div>
     </div>
   );
