@@ -49,7 +49,7 @@ function ProductList() {
   return (
     <div className="flex justify-center pt-6 mb-2">
       {state.products.length ? (
-        <div className="grid grid-cols-2  gap-14">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3">
           {filterProducts().map((product) => (
             <ProductItem
               key={product._id}
