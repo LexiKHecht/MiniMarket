@@ -53,8 +53,16 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_THOUGHT = gql`
-  mutation addThought($thoughtText: String!, $thoughtAuthor: String!, $productId: String!) {
-    addThought(thoughtText: $thoughtText, thoughtAuthor: $thoughtAuthor, productId: $productId) {
+  mutation addThought(
+    $thoughtText: String!
+    $thoughtAuthor: String!
+    $productId: String!
+  ) {
+    addThought(
+      thoughtText: $thoughtText
+      thoughtAuthor: $thoughtAuthor
+      productId: $productId
+    ) {
       _id
       thoughtText
       thoughtAuthor
@@ -80,7 +88,7 @@ export const NEW_LISTING = gql`
     $imageURL: String!
     $quantity: Int!
     $tags: [String]
-    $price: PriceInput
+    $price: Float!
   ) {
     addListing(
       name: $name
@@ -95,10 +103,7 @@ export const NEW_LISTING = gql`
       imageURL
       quantity
       tags
-      price {
-        amount
-        currencyCode
-      }
+      price
     }
   }
 `;

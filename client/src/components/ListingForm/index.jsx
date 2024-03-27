@@ -13,6 +13,7 @@ function ListingForm() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    // eslint-disable-next-line no-unused-vars
     const mutationResponse = await addListing({
       variables: {
         name: formState.name,
@@ -20,10 +21,7 @@ function ListingForm() {
         imageURL: formState.imageURL,
         quantity: parseInt(formState.quantity),
         tags: formState.tags,
-        price: {
-          amount: formState.amount,
-          currencyCode: "USD"
-        },
+        price: parseInt(formState.amount)
       },
     });
   };
@@ -96,7 +94,7 @@ function ListingForm() {
                   className="mt-1 p-2 border-2 border-palePurple rounded-md shadow-lg w-48 sm:w-56 md:w-72 lg:w-96"
                   placeholder="$0"
                   name="amount"
-                  type="amount"
+                  type="number"
                   id="amount"
                   onChange={handleChange}
                 />

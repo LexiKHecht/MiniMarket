@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 // import { pluralize } from "../../utils/helpers"
 import { useStoreContext } from "../../utils/GlobalState";
 import { useQuery } from "@apollo/client";
@@ -53,14 +52,12 @@ function ProductItem(item) {
       <div className="flex max-h-screen max-w-screen items-center justify-center bg-gray-100">
         <div className="flex font-sans">
           <div className="flex-none w-48 relative">
-            <Link to={`/products/${_id}`}>
               <img
                 className="absolute inset-0 w-full h-full object-scale-down"
                 loading="lazy"
                 alt={name}
                 src={imageURL}
               />
-            </Link>
           </div>
           <form className="flex-auto p-6">
             <div className="flex flex-wrap">
