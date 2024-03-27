@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useStoreContext } from "../../utils/GlobalState";
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
@@ -44,15 +43,13 @@ function ProductItem(item) {
     <div className="m-2">
       <div className="flex max-h-screen max-w-screen items-center justify-center bg-gray-100 dark:bg-darkGray">
         <div className="flex font-sans">
-          <div className="flex-none lg:w-48 md:w-40 sm:w-36 w-28 relative">
-            <Link to={`/products/${_id}`}>
+          <div className="flex-none w-48 relative">
               <img
                 className="absolute inset-0 w-full h-full object-scale-down"
                 loading="lazy"
                 alt={name}
                 src={imageURL}
               />
-            </Link>
           </div>
           <form className="flex-auto p-6">
             <div className="flex flex-wrap">

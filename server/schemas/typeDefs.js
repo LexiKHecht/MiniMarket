@@ -7,15 +7,9 @@ const typeDefs = `
     description: String
     imageURL: String
     quantity: Int
-    price: Price
+    price: Float
     tags: [String]
   }
-
-type Price {
-  amount: Float
-  currencyCode: String
-}
-
   type Order {
     _id: ID
     purchaseDate: String
@@ -46,7 +40,7 @@ type Price {
     purchaseQuantity: Int
     name: String
     imageURL: String
-    price: PriceInput
+    price: Float
     quantity: Int
   }
 
@@ -91,7 +85,7 @@ type Price {
     removeThought(thoughtId: ID!): Thought
     processPayment(amount: Int!, token: String!): PaymentResult!
 
-    addListing(name: String!, description: String!, imageURL: String!, quantity: Int!, price: PriceInput, tags: [String]): Product
+    addListing(name: String!, description: String!, imageURL: String!, quantity: Int!, price: Float, tags: [String]): Product
   }
 `;
 

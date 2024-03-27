@@ -58,7 +58,6 @@ useEffect(() => {
     let sum = 0;
     state.cart.forEach((item) => {
       sum += item.price * item.purchaseQuantity;
-      console.log(item)
     });
     return sum.toFixed(2);
   }
@@ -72,7 +71,7 @@ useEffect(() => {
         products: [...state.cart],
       },
     });
-    
+    console.log(getCheckout);
   }
 
   if (!state.cartOpen) {

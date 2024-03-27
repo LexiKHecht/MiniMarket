@@ -40,10 +40,7 @@ db.once("open", async () => {
 
     // Insert the processed product data into the Product collection
     await Product.insertMany(products);
-    console.log(
-      "Products seeded successfully. Price:",
-      products[0].price.amount,
-    );
+    console.log("Products seeded successfully. Price:", products[0].price);
   } catch (error) {
     console.error("Error seeding products:", error);
   }

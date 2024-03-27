@@ -7,10 +7,7 @@ export const QUERY_PRODUCTS = gql`
       _id
       name
       description
-      price {
-        amount
-        currencyCode
-      }
+      price
       quantity
       imageURL
       tags
@@ -33,16 +30,12 @@ export const QUERY_ALL_PRODUCTS = gql`
       name
       description
       imageURL
-      price {
-        amount
-        currencyCode
-      }
+      price
       quantity
       tags
     }
   }
 `;
-
 
 export const QUERY_USER = gql`
   {
@@ -57,10 +50,7 @@ export const QUERY_USER = gql`
           _id
           name
           description
-          price {
-            amount
-            currencyCode
-          }
+          price
           quantity
           imageURL
         }
