@@ -1,30 +1,22 @@
 import { Link } from "react-router-dom";
-// import { pluralize } from "../../utils/helpers"
 import { useStoreContext } from "../../utils/GlobalState";
-import { useQuery } from "@apollo/client";
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
-import ThoughtList from "../../components/ThoughtList";
 import ThoughtForm from "../../components/ThoughtForm";
-import { QUERY_THOUGHTS } from "../../utils/queries";
-
-
 
 function ProductItem(item) {
  const [state, dispatch] = useStoreContext();
-
-//  const { data } = useQuery(QUERY_THOUGHTS);
 
   const {
     imageURL,
     name,
     _id,
     price,
-    productId
     // quantity -can't get this working :(
   } = item;
 
-  const { cart } = state
+  const { cart } = state;
+
 
   const addToCart = () => {
     const itemInCart = cart.find((cartItem) => cartItem._id === _id)
@@ -47,7 +39,6 @@ function ProductItem(item) {
     }
   }
 
-    // const thoughts = data?.thoughts || [];
 
   return (
     <div className="m-2">
@@ -174,13 +165,6 @@ function ProductItem(item) {
         <ThoughtForm 
           product={item}
         />
-      </div>
-      <div>
-        {/* <ThoughtList
-          className=""
-          thoughts={thoughts}
-          title="Some Feed for Thought(s)..."
-        /> */}
       </div>
     </div>
   );

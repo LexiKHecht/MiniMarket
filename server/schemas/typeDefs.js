@@ -72,7 +72,7 @@ type Price {
 
     order(_id: ID!): Order
     checkout(products: [ProductInput]): Checkout
-    thoughts: [Thought]!
+    thoughts(productId: String!): [Thought]!
     thought(thoughtId: ID!): Thought
   }
   type PaymentResult {

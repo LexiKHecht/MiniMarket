@@ -10,8 +10,6 @@ const ThoughtList = ({
     return <h3>No Thoughts Yet</h3>;
   }
 
-  console.log("IN THOUGHT LIST " + thoughts.length);
-
   return (
     <div>
       {showTitle && <h3>{title}</h3>}
@@ -40,13 +38,9 @@ const ThoughtList = ({
             <div className="card-body bg-light p-2">
               <p>{thought.thoughtText}</p>
             </div>
-            <Link
-              className="btn btn-primary btn-block btn-squared"
-              to={`/thoughts/${thought._id}`}
-            >
-              Join the discussion on this thought.
-            </Link>
+  
           </div>
+
         ))}
     </div>
   );
