@@ -43,7 +43,7 @@ function ProductItem(item) {
     <div className="m-2">
       <div className="flex max-h-screen max-w-screen items-center justify-center bg-gray-100 dark:bg-darkGray">
         <div className="flex font-sans">
-          <div className="flex-none w-48 relative">
+          <div className="flex-none lg:w-48 w-48 relative">
               <img
                 className="absolute inset-0 w-full h-full object-scale-down"
                 loading="lazy"
