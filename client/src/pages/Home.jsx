@@ -10,7 +10,7 @@ const Home = () => {
 
 
   return (
-    <div className="  max-w-screen bg-tansparent" >
+    <div className="max-w-screen bg-tansparent dark:bg-offBlack" >
       {/* <CategoryMenu /> */}
       <ProductList />
      
