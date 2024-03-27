@@ -43,7 +43,7 @@ const CartItem = ({ item }) => {
       </div>
       <div>
         <div className="dark:text-offBlack">
-          {item.name}, ${item.unit_amount}
+          {item.name}, ${item.price}
         </div>
         <div>
           <span className="dark:text-offBlack">Qty:</span>
