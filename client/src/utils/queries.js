@@ -60,8 +60,8 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_THOUGHTS = gql`
-  query getThoughts {
-    thoughts {
+  query getThoughts($productId: String!) {
+    thoughts(productId: $productId) {
       _id
       thoughtText
       thoughtAuthor

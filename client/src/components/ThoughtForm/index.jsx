@@ -1,56 +1,56 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useMutation, useQuery } from '@apollo/client';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useMutation, useQuery } from "@apollo/client";
+import ThoughtList from "../../components/ThoughtList";
 
-import { ADD_THOUGHT } from '../../utils/mutations';
-import { QUERY_THOUGHTS, QUERY_ME } from '../../utils/queries';
+import { ADD_THOUGHT } from "../../utils/mutations";
+import { QUERY_THOUGHTS } from "../../utils/queries";
 
-import Auth from '../../utils/auth';
+import Auth from "../../utils/auth";
 
-function ThoughtForm(productId){
+function ThoughtForm(item) {
+  const productId = item.product.productId;
 
-  // const { loading, data } = useQuery(QUERY_ME);
+  const { data } = useQuery(QUERY_THOUGHTS, {
+    variables: { productId },
+  });
 
-  // console.log("DATA AFTER QUERY ME " + data);
+  console.log(data);
 
-  const [thoughtText, setThoughtText] = useState('');
+  const thoughts = data?.thoughts || [];
+
+  const [thoughtText, setThoughtText] = useState("");
 
   const [characterCount, setCharacterCount] = useState(0);
 
-    const [addThought, { error }] = useMutation (ADD_THOUGHT, {
+  const [addThought, { error }] = useMutation(ADD_THOUGHT, {
     refetchQueries: [
       QUERY_THOUGHTS,
-      'getThoughts',
-      QUERY_ME,
-      'me'
-    ]
+      {
+        variables: { productId },
+      },
+    ],
   });
-
-  // const [addThought, { error }] = useMutation(ADD_THOUGHT);
-
-  // const userData = data?.me || {};
-
-  // console.log("USER DATA " + userData + "AUTH USERNAME " + Auth.getProfile().data.username);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-    if(!token){
+    if (!token) {
       return false;
     }
 
     try {
-      const { data } = await addThought({
+      await addThought({
         variables: {
           thoughtText,
           thoughtAuthor: Auth.getProfile().data.username,
-          productId
+          productId,
         },
       });
 
-      setThoughtText('');
+      setThoughtText("");
     } catch (err) {
       console.error(err);
     }
@@ -59,29 +59,25 @@ function ThoughtForm(productId){
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === 'thoughtText' && value.length <= 280) {
+    if (name === "thoughtText" && value.length <= 280) {
       setThoughtText(value);
       setCharacterCount(value.length);
     }
   };
-
-  // if(loading){
-  //   return <h2>LOADING...</h2>;
-  // }
 
   return (
     <div className="">
       {Auth.loggedIn() ? (
         <>
           <p
-            className={`m-0 text-xs text-lightGray ${
+            className={`text-lightGray m-0 text-xs ${
               characterCount > 280 || error ? "text-danger" : ""
             }`}
           >
             Character Count: {characterCount}/280
           </p>
           <form
-            className="flex-row justify-center justify-space-between-md align-center"
+            className="justify-space-between-md align-center flex-row justify-center"
             onSubmit={handleFormSubmit}
           >
             <div className="col-12 col-lg-9 text-offBlack">
@@ -97,16 +93,23 @@ function ThoughtForm(productId){
 
             <div className="col-12 col-lg-3">
               <button
-                className="btn btn-primary btn-block py-3 text-xs relative inline text-offBlack hover:text-darkGray before:bg-palePurple  before:absolute before:-bottom-1 before:block before:h-[2px] before:w-full before:origin-bottom-right before:scale-x-0 before:transition before:duration-300 before:ease-in-out hover:before:origin-bottom-left hover:before:scale-x-100"
+                className="btn btn-primary btn-block text-offBlack hover:text-darkGray before:bg-palePurple relative inline py-3 text-xs  before:absolute before:-bottom-1 before:block before:h-[2px] before:w-full before:origin-bottom-right before:scale-x-0 before:transition before:duration-300 before:ease-in-out hover:before:origin-bottom-left hover:before:scale-x-100"
                 type="submit"
-             
               >
                 Post Thought
-                
               </button>
             </div>
+            <div>
+              {
+                <ThoughtList
+                  className=""
+                  thoughts={thoughts}
+                  title="Thoughts on this product..."
+                />
+              }
+            </div>
             {error && (
-              <div className="col-12 my-3 bg-danger text-white p-3">
+              <div className="col-12 bg-danger my-3 p-3 text-white">
                 {error.message}
               </div>
             )}
@@ -120,6 +123,6 @@ function ThoughtForm(productId){
       )}
     </div>
   );
-};
+}
 
 export default ThoughtForm;

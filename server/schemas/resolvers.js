@@ -99,8 +99,8 @@ const resolvers = {
         throw new Error("An error occurred during checkout. Please try again.");
       }
     },
-    thoughts: async () => {
-      return Thought.find().sort({ createdAt: -1 });
+    thoughts: async (parent, { productId }) => {
+      return Thought.find({ productId: productId }).sort({ createdAt: -1 });
     },
 
     thought: async (parent, { thoughtId }) => {
@@ -185,9 +185,6 @@ const resolvers = {
       return { token, user };
     },
     addThought: async (parent, { thoughtText, thoughtAuthor, productId }) => {
-      console.log(
-        "in resolvers " + thoughtText + " " + thoughtAuthor + " " + productId,
-      );
       return Thought.create({ thoughtText, thoughtAuthor, productId });
     },
     removeThought: async (parent, { thoughtId }) => {

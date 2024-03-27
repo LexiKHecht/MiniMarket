@@ -9,7 +9,6 @@ import NoMatch from './pages/NoMatch';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Success from './pages/Success';
-import OrderHistory from './pages/OrderHistory';
 import SingleThought from './pages/SingleThought.jsx';
 import NewItem from './pages/NewItem.jsx';
 
@@ -31,9 +30,6 @@ const router = createBrowserRouter([
       }, {
         path: '/success',
         element: <Success />
-      }, {
-        path: '/orderHistory',
-        element: <OrderHistory />
       }, {
         path: '/products/:id',
         element: <Detail />

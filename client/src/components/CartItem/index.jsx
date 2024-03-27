@@ -37,20 +37,20 @@ const CartItem = ({ item }) => {
   }
 
   return (
-    <div className="flex-row p-2 bg-palePurple rounded-t-lg text-darkGray dark:text-white">
+    <div className="flex-row p-2 bg-palePurple rounded gap-2 text-darkGray dark:text-white m-2">
       <div>
         <img src={`/images/${item.image}`} alt="" />
       </div>
       <div>
-        <div>
+        <div className="dark:text-offBlack">
           {item.name}, ${item.price}
         </div>
         <div>
-          <span>Qty:</span>
+          <span className="dark:text-offBlack">Qty:</span>
           <input
             type="number"
             placeholder="1"
-            className="bg-transparent"
+            className="bg-transparent dark:text-offBlack"
             value={item.purchaseQuantity}
             onChange={onChange}
           />

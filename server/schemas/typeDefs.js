@@ -49,6 +49,7 @@ const typeDefs = `
     thoughtText: String
     thoughtAuthor: String
     createdAt: String
+    productId: String
   }
 
   input PriceInput {
@@ -65,7 +66,7 @@ const typeDefs = `
 
     order(_id: ID!): Order
     checkout(products: [ProductInput]): Checkout
-    thoughts: [Thought]!
+    thoughts(productId: String!): [Thought]!
     thought(thoughtId: ID!): Thought
   }
   type PaymentResult {

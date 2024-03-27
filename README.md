@@ -1,49 +1,53 @@
-## RealStore
-![License](https://img.shields.io/badge/License-MIT-yellow.svg)
+<h1 align="center">
+
+# MiniMarket <img width="75" height="40" alt="The Real Fake Store" src="https://github.com/LexiKHecht/Project3-RealStore/assets/145725343/69c74a4f-fd62-4d72-b2fa-cb4bf077c553">
+
+[![Licence](https://img.shields.io/github/license/Ileriayo/markdown-badges?style=for-the-badge)](./LICENSE)
+[![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+[![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)](https://expressjs.com/)
+[![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://react.dev/)
+[![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/en)
+[![Apollo-GraphQL](https://img.shields.io/badge/-ApolloGraphQL-311C87?style=for-the-badge&logo=apollo-graphql)](https://www.apollographql.com/)
+![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
+</h1>
+
 ## Description
+MiniMarket (MM) is a buy-and-sell e-commerce site that utilizes the MERN stack (MongoDB, Express.js, React, Node.js). This application employs Mongoose ODM to structure data models and the React library for building the front-end UI. Stripe API is leveraged to facilitate purchases and streamline payments. MM is built upon an Apollo Server and GraphQL API. JSON Web Tokens are used for authentication, enabling additional features of the app such as user profiles, updatable cart quantities, and the Stripe payment UI
 
 ## Table of Contents
-- [Description](#description)<br>
-- [Table of Contents](#tabel-of-contents)<br>
-- [Installation](#installation)<br>
-- [Technologies](#technologies)<br>
-- [License](#license)<br>
-- [Questions/Contact](#questionscontact)
-- [Authors](#authors)
+  * [Installation](#installation)
+  * [Technology Used](#technology-used)
+  * [License](#license)
+  * [Questions](#questions)
+    
   ## Installation
-  We used render to deploy this application
-  Link:
-  ## Technologies
-  PNPM
-  React
-  MongoDB
-  Apollo Server
-  ## License
+  
+  To install required dependencies, run the following command:
+  > pnpm install
+
+  ## Technology Used
+- [Express](https://expressjs.com/)
+- [Apollo GrapgQL](https://www.apollographql.com/)
+- [React](https://react.dev/)
+- [MangoDB](https://www.mongodb.com/)
+- [MongooseODM](https://mongoosejs.com/)
+- [JSON Web Token](https://jwt.io/)
+- [Vite](https://vitejs.dev/)
+- [Nodemon](https://nodemon.io/)
+- [Stripe](https://stripe.com/)
+
+## License
   MIT License
 Copyright (c) 2024 Lexi Hecht, Conor Allen, Jessica Wey, Matthew Scott, Nicholas Attaway
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+- [MIT](https://opensource.org/license/mit/)
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-## Questions and Contact
+## Questions💭
 If you have any questions about anythings our githubs are provided in the authors subtitle
-## Authors
-Conor Allen GitHub:("https://github.com/callen996")
-Lexi Hecht GitHub: ("https://github.com/LexiKHecht")
-Matthew Scott GitHub:("https://github.com/MScott-Dev")
-Nicholas Attaway GitHub:("https://github.com/Dev-Attaway")
-Jessica Wey GitHub:("https://github.com/jessicanwey")
+
+## Authors✏️
+- Conor Allen GitHub: https://github.com/callen996
+- Lexi Hecht GitHub: https://github.com/LexiKHecht
+- Matthew Scott GitHub: https://github.com/MScott-Dev
+- Nicholas Attaway GitHub: https://github.com/Dev-Attaway
+- Jessica Wey GitHub: https://github.com/jessicanwey
