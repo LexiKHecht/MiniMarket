@@ -11,10 +11,10 @@ const Home = () => {
 
   return (
     <div className="max-w-screen bg-tansparent dark:bg-offBlack">
-      {/* <CategoryMenu /> */}
+      <Cart/>
       <ProductList />
-     
-      <Cart className=""/>
+
+      
     </div>
   );
 };
