@@ -86,30 +86,30 @@ useEffect(() => {
   }
 
   return (
-    <div className="cart">
+    <div className="cart dark:bg-darkGray">
       <div className="close" onClick={toggleCart}>
         [close]
       </div>
-      <h2>Shopping Cart</h2>
+      <h2 className=' dark:text-offWhite shadow-xl'>Shopping Cart</h2>
       {state.cart.length ? (
         <div>
           {state.cart.map((item) => (
             <CartItem key={item._id} item={item} />
           ))}
 
-          <div className="flex-row space-between">
+          <div className="flex-row space-between pl-2 dark:text-offWhite">
             <strong>Total: ${calculateTotal()}</strong>
 
             {/* Check to see if the user is logged in. If so render a button to check out */}
             {Auth.loggedIn() ? (
-              <button onClick={submitCheckout}>Checkout</button>
+              <button className="pl-2 dark:text-offWhite" onClick={submitCheckout}>Checkout</button>
             ) : (
               <span>(log in to check out)</span>
             )}
           </div>
         </div>
       ) : (
-        <h3>
+        <h3 className=' dark:text-offWhite'>
           <span role="img" aria-label="shocked">
             😱
           </span>

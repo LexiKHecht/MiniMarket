@@ -38,12 +38,12 @@ function ListingForm() {
   console.log(formState);
 
   return (
-    <section className='flex justify-center'>
+    <section className='flex justify-center dark:bg-offBlack'>
       <form onSubmit={handleFormSubmit}>
           <div className="flex h-20">
             <div className="ml-5">
               <section>
-                <label className="block text-sm font-medium text-gray-600" htmlFor="firstName">Name</label>
+                <label className="block text-sm font-medium text-gray-600 dark:text-offWhite" htmlFor="firstName">Name</label>
                 <input
                   className="mt-1 p-2 border-2 border-palePurple rounded-md shadow-lg w-48 sm:w-56 md:w-72 lg:w-96"
                   placeholder="Name"
@@ -56,7 +56,7 @@ function ListingForm() {
             </div>
           </div>
           <section className='ml-5'>
-            <label className="block text-sm font-medium text-gray-600" htmlFor="lastName">Description</label>
+            <label className="block text-sm font-medium text-gray-600 dark:text-offWhite" htmlFor="lastName">Description</label>
               <input
                 className="mt-1 p-2 border-2 border-palePurple rounded-md shadow-lg w-48 sm:w-56 md:w-72 lg:w-96"
                 placeholder="..."
@@ -68,7 +68,7 @@ function ListingForm() {
           </section>
           <div className="ml-5">
             <div className="my-5  w-full">
-                <label className="block text-sm font-medium text-gray-600" htmlFor="email">Image</label>
+                <label className="block text-sm font-medium text-gray-600 dark:text-offWhite" htmlFor="email">Image</label>
                 <FileBase64
                   name="imageURL"
                   multiple={ false }
@@ -77,7 +77,7 @@ function ListingForm() {
           </div>
           <div className="ml-5">
             <div className="mb-5  w-full">
-                <label className="block text-sm font-medium text-gray-600" htmlFor="pwd">Quantity</label>
+                <label className="block text-sm font-medium text-gray-600 dark:text-offWhite" htmlFor="pwd">Quantity</label>
                 <input
                   className=" p-2 border-2 border-palePurple rounded-md shadow-lg w-48 sm:w-56 md:w-72 lg:w-96 lg:m-auto"
                   placeholder="1"
@@ -91,7 +91,7 @@ function ListingForm() {
           
           <div className="ml-5">
             <div className="mb-5  w-full">
-                <label className="block text-sm font-medium text-gray-600" htmlFor="email">Price</label>
+                <label className="block text-sm font-medium text-gray-600 dark:text-offWhite" htmlFor="email">Price</label>
                 <input
                   className="mt-1 p-2 border-2 border-palePurple rounded-md shadow-lg w-48 sm:w-56 md:w-72 lg:w-96"
                   placeholder="$0"

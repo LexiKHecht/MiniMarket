@@ -11,7 +11,7 @@ function Nav() {
           <div className="flex w-full flex-wrap items-center justify-between px-3">
             <nav className="w-full rounded-md" aria-label="breadcrumb">
               <ol className="list-reset ms-2 flex">
-                <li className="text-black/60 transition duration-200 hover:text-palePurple/80 hover:ease-in-out focus:text-black/80 active:text-palePurple/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80">
+                <li className="text-black/60 transition duration-200 hover:text-palePurple/80 hover:ease-in-out focus:text-black/80 active:text-palePurple/80 motion-reduce:transition-none dark:text-offWhite dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80">
                   <Link to="/">Home</Link>
                 </li>
                 <span className="[&>svg]:w-3 mx-2 text-black/60 dark:text-white/60">
@@ -32,6 +32,7 @@ function Nav() {
                     />
                   </svg>
                 </span>
+
 
                 <li className="text-black/60 transition duration-200  hover:text-palePurple/80 hover:ease-in-out focus:text-black/80 active:text-palePurple/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80">
                   <Link to="/newListing">Create a Listing</Link>
@@ -58,7 +59,7 @@ function Nav() {
                 <li>
                   {/* this is not using the Link component to logout or user and then refresh the application to the start */}
                   <a
-                    className="text-black/60 transition duration-200  hover:text-palePurple/80 hover:ease-in-out focus:text-black/80 active:text-palePurple/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80"
+                    className="text-black/60 transition duration-200  hover:text-palePurple/80 hover:ease-in-out focus:text-black/80 active:text-palePurple/80 motion-reduce:transition-none dark:text-offWhite dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80"
                     href="/"
                     onClick={() => Auth.logout()}
                   >
